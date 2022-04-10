@@ -33,6 +33,15 @@ func StringFromPtr(v *string) string {
 	return *v
 }
 
+// TimePtrToUnixSecPtr returns pointer of which value is v.
+func TimePtrToUnixSecPtr(t *time.Time) *int64 {
+	if t == nil || t.IsZero() {
+		return nil
+	}
+	unix := t.Unix()
+	return &unix
+}
+
 // TimeToUnixSecPtr returns pointer of which value is v.
 func TimeToUnixSecPtr(t time.Time) *int64 {
 	if t.IsZero() {
