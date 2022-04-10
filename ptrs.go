@@ -1,5 +1,7 @@
 package ptrs
 
+import "time"
+
 // NewIntPtr returns pointer of which value is v.
 func NewIntPtr(v int) *int {
 	return &v
@@ -29,4 +31,13 @@ func StringFromPtr(v *string) string {
 		return ""
 	}
 	return *v
+}
+
+// TimeToUnixSecPtr returns pointer of which value is v.
+func TimeToUnixSecPtr(t time.Time) *int64 {
+	if t.IsZero() {
+		return nil
+	}
+	unix := t.Unix()
+	return &unix
 }
